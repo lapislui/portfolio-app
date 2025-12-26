@@ -54,19 +54,27 @@ const Navbar = () => {
             <motion.a
               key={item.name}
               href={item.href}
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white transition-colors relative"
               whileHover={{ y: -2 }}
               transition={{ duration: 0.2 }}
             >
               {item.name}
+              <motion.div 
+                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-500"
+                initial={{ width: 0 }}
+                whileHover={{ width: '100%' }}
+                transition={{ duration: 0.3 }}
+              />
             </motion.a>
           ))}
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
+        <motion.button 
           className="md:hidden text-white"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
         >
           <svg 
             className="w-6 h-6" 
@@ -90,7 +98,7 @@ const Navbar = () => {
               />
             )}
           </svg>
-        </button>
+        </motion.button>
       </div>
 
       {/* Mobile Menu */}
@@ -103,14 +111,24 @@ const Navbar = () => {
         >
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             {navItems.map((item) => (
-              <a
+              <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-gray-300 hover:text-white py-2 transition-colors"
+                className="text-gray-300 hover:text-white py-2 transition-colors relative"
                 onClick={() => setIsMenuOpen(false)}
+                whileHover={{ x: 5 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2 }}
               >
                 {item.name}
-              </a>
+                <motion.div 
+                  className="absolute -bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: '100%' }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.a>
             ))}
           </div>
         </motion.div>

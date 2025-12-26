@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import AnimatedText from './AnimatedText';
 import AnimatedSection from './AnimatedSection';
+import FloatingParticles from './FloatingParticles';
 
 const HeroSection = () => {
   return (
@@ -16,6 +17,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900"></div>
       </div>
+      
+      {/* Floating Particles */}
+      <FloatingParticles />
       
       {/* Content */}
       <AnimatedSection className="relative z-10 text-center px-4 py-20">
@@ -48,18 +52,22 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.5 }}
         >
-          <Link 
-            href="#projects"
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg"
           >
             View My Work
-          </Link>
-          <Link 
-            href="#contact"
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-3 bg-transparent border-2 border-blue-600 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
           >
             Contact Me
-          </Link>
+          </motion.button>
         </motion.div>
       </AnimatedSection>
       

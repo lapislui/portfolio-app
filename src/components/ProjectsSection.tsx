@@ -60,21 +60,45 @@ const ProjectsSection = () => {
               className="p-6 bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)" }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <h3 className="text-xl font-semibold text-blue-400 mb-3">{project.title}</h3>
-              <p className="text-gray-300 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2">
+              <motion.h3 
+                className="text-xl font-semibold text-blue-400 mb-3"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: index * 0.1 + 0.2 }}
+              >
+                {project.title}
+              </motion.h3>
+              <motion.p 
+                className="text-gray-300 mb-4"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: index * 0.1 + 0.3 }}
+              >
+                {project.description}
+              </motion.p>
+              <motion.div 
+                className="flex flex-wrap gap-2"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: index * 0.1 + 0.4 }}
+              >
                 {project.technologies.map((tech, techIndex) => (
-                  <span 
+                  <motion.span 
                     key={techIndex}
                     className="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm"
+                    whileHover={{ scale: 1.1, backgroundColor: "rgba(59, 130, 246, 0.3)" }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 + 0.1 + techIndex * 0.05 }}
                   >
                     {tech}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

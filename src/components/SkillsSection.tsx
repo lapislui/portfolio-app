@@ -2,20 +2,23 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaPython, FaCss3Alt, FaHtml5, FaJs, FaGitAlt, FaDocker } from 'react-icons/fa';
+import { SiDjango, SiFlask, SiMysql, SiCplusplus, SiMongodb } from 'react-icons/si';
+import { LiaToolsSolid } from 'react-icons/lia';
 import AnimatedSection from './AnimatedSection';
 
 const SkillsSection = () => {
   const skills = [
-    { name: "Python", level: 90 },
-    { name: "Django", level: 85 },
-    { name: "Flask", level: 80 },
-    { name: "JavaScript", level: 75 },
-    { name: "HTML/CSS", level: 85 },
-    { name: "MySQL", level: 70 },
-    { name: "Docker", level: 75 },
-    { name: "Git", level: 80 },
-    { name: "C", level: 70 },
-    { name: "Collaboration", level: 90 }
+    { name: "Python", level: 90, icon: FaPython },
+    { name: "Django", level: 85, icon: SiDjango },
+    { name: "Flask", level: 80, icon: SiFlask },
+    { name: "JavaScript", level: 75, icon: FaJs },
+    { name: "HTML/CSS", level: 85, icon: null }, // Will use both FaHtml5 and FaCss3Alt
+    { name: "MySQL", level: 70, icon: SiMysql },
+    { name: "Docker", level: 75, icon: FaDocker },
+    { name: "Git", level: 80, icon: FaGitAlt },
+    { name: "C", level: 70, icon: SiCplusplus },
+    { name: "Collaboration", level: 90, icon: LiaToolsSolid }
   ];
 
   return (
@@ -43,29 +46,36 @@ const SkillsSection = () => {
           />
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
           {skills.map((skill, index) => (
             <motion.div 
               key={index}
-              className="p-4 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700"
+              className="flex flex-col items-center p-6 bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:scale-105"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
             >
-              <div className="flex justify-between mb-2">
-                <span className="font-medium">{skill.name}</span>
-                <span className="text-blue-400">{skill.level}%</span>
-              </div>
-              <div className="w-full bg-gray-700 rounded-full h-2.5">
-                <motion.div 
-                  className="bg-blue-500 h-2.5 rounded-full"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.2 + index * 0.05 }}
-                />
-              </div>
+              <motion.div 
+                className="mb-4 text-4xl text-blue-400"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {skill.name === "HTML/CSS" ? (
+                  <div className="flex space-x-2">
+                    <FaHtml5 />
+                    <FaCss3Alt />
+                  </div>
+                ) : (
+                  skill.icon && React.createElement(skill.icon)
+                )}
+              </motion.div>
+              <motion.span 
+                className="font-medium text-center"
+                whileHover={{ y: -5 }}
+              >
+                {skill.name}
+              </motion.span>
             </motion.div>
           ))}
         </div>

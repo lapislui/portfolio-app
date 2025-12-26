@@ -52,19 +52,52 @@ const ExperienceSection = () => {
               className="mb-10 p-6 bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -5, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
+              <motion.div 
+                className="flex flex-col md:flex-row md:justify-between md:items-center mb-3"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: index * 0.1 + 0.1 }}
+              >
                 <div>
-                  <h3 className="text-xl font-semibold text-blue-400">{exp.position}</h3>
-                  <p className="text-gray-300">{exp.company}</p>
+                  <motion.h3 
+                    className="text-xl font-semibold text-blue-400"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 + 0.2 }}
+                  >
+                    {exp.position}
+                  </motion.h3>
+                  <motion.p 
+                    className="text-gray-300"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 + 0.3 }}
+                  >
+                    {exp.company}
+                  </motion.p>
                 </div>
-                <span className="inline-block px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm mt-2 md:mt-0">
+                <motion.span 
+                  className="inline-block px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm mt-2 md:mt-0"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.1 + 0.4 }}
+                  whileHover={{ scale: 1.05 }}
+                >
                   {exp.period}
-                </span>
-              </div>
-              <p className="text-gray-400">{exp.description}</p>
+                </motion.span>
+              </motion.div>
+              <motion.p 
+                className="text-gray-400"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: index * 0.1 + 0.5 }}
+              >
+                {exp.description}
+              </motion.p>
             </motion.div>
           ))}
         </div>

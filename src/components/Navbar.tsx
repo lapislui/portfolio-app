@@ -58,7 +58,7 @@ const Navbar = () => {
         { name: 'Education', href: '#education' },
         { name: 'Skills', href: '#skills' },
         { name: 'Certificates', href: '#certificates' },
-        { name: 'GitHub', href: '#github' },
+        // { name: 'GitHub', href: '#github' },
       ]
     },
     { 

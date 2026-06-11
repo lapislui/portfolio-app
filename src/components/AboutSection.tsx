@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import AnimatedSection from './AnimatedSection';
 
 const AboutSection = () => {
@@ -38,8 +39,15 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-gray-800 border-2 border-blue-500 rounded-full w-64 h-64 flex items-center justify-center overflow-hidden">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-60 h-60" />
+            <div className="relative bg-gray-800 border-2 border-blue-500 rounded-full w-64 h-64 overflow-hidden shadow-2xl">
+              <Image
+                src="/me.jpg"
+                alt="Keval Patel"
+                fill
+                sizes="(max-width: 768px) 256px, 256px"
+                priority
+                className="object-cover transition-transform duration-500 hover:scale-110"
+              />
             </div>
           </motion.div>
 

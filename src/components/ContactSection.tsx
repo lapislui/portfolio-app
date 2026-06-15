@@ -102,7 +102,7 @@ const ContactSection = () => {
                 <h4 className="text-lg font-semibold mb-4 text-blue-400">Follow Me</h4>
                 <div className="flex space-x-4">
                   <a 
-                    href="https://github.com" 
+                    href="https://github.com/lapislui" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-800 rounded-full hover:bg-blue-600 transition-colors"

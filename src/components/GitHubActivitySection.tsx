@@ -81,8 +81,7 @@ const GitHubActivitySection = () => {
   // Function to fetch GitHub stats from API route
   const fetchGitHubStats = async () => {
     try {
-      // In a real implementation, you would fetch from the API route
-      const response = await fetch(`/api/github?username=${process.env.NEXT_PUBLIC_GITHUB_USERNAME || process.env.GITHUB_USERNAME || 'your-github-username'}`);
+      const response = await fetch(`/api/github?username=${process.env.NEXT_PUBLIC_GITHUB_USERNAME || process.env.GITHUB_USERNAME || 'lapislui'}`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch GitHub data');

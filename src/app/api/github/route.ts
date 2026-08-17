@@ -79,29 +79,29 @@ export async function GET(request: NextRequest) {
       openSourceProjects: [
         {
           id: 1,
-          name: 'portfolio-app',
+          name: 'Portfolio Web App',
           description: 'A modern, interactive 3D portfolio website built with Next.js, Tailwind CSS, and Three.js / React Three Fiber.',
           stars: 4,
           language: 'TypeScript',
-          url: `https://github.com/${username}/portfolio-app`,
+          url: '#',
           updatedAt: new Date().toISOString(),
         },
         {
           id: 2,
-          name: 'mautic',
-          description: 'Custom modifications, modules, and integrations for Mautic marketing automation tool.',
+          name: 'Marketing Automation Integration',
+          description: 'Custom modifications, modules, and integrations for marketing automation tool.',
           stars: 2,
           language: 'PHP',
-          url: `https://github.com/${username}`,
+          url: '#',
           updatedAt: new Date().toISOString(),
         },
         {
           id: 3,
-          name: 'flask-site',
-          description: 'A company showcase website developed using Flask with GitHub OAuth, dynamic projects display, and database integration.',
+          name: 'Flask Web Application',
+          description: 'A company showcase website developed using Flask with OAuth, dynamic projects display, and database integration.',
           stars: 3,
           language: 'Python',
-          url: `https://github.com/${username}`,
+          url: '#',
           updatedAt: new Date().toISOString(),
         }
       ],
@@ -274,11 +274,11 @@ export async function GET(request: NextRequest) {
       .slice(0, 6)
       .map((repo: GitHubRepo) => ({
         id: repo.id,
-        name: repo.name,
+        name: repo.name.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
         description: repo.description || 'No description provided',
         stars: repo.stargazers_count,
-        language: repo.language || 'Unknown',
-        url: repo.html_url,
+        language: repo.language || 'Code',
+        url: '#',
         updatedAt: repo.updated_at,
       }));
 

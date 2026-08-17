@@ -4,7 +4,6 @@ import AboutSection from '../components/AboutSection';
 import EducationSection from '../components/EducationSection';
 import ExperienceSection from '../components/ExperienceSection';
 import SkillsSection from '../components/SkillsSection';
-import GitHubActivitySection from '../components/GitHubActivitySection';
 import CertificatesSection from '../components/CertificatesSection';
 import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
@@ -25,7 +24,6 @@ export default function Home() {
           <EducationSection />
           <ExperienceSection />
           <SkillsSection />
-          <GitHubActivitySection />
           <CertificatesSection />
           <ProjectsSection />
           <ContactSection />
